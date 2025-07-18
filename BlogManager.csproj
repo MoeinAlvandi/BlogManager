@@ -7,13 +7,21 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="BlogManager.Domain\Enums\" />
-    <Folder Include="BlogManager.Domain\Interfaces\" />
-    <Folder Include="Models\" />
+    <Compile Remove="BlogManager.Domain\**" />
+    <Content Remove="BlogManager.Domain\**" />
+    <EmbeddedResource Remove="BlogManager.Domain\**" />
+    <None Remove="BlogManager.Domain\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="BlogManager.IOC\BlogManager.IOC.csproj" />
+    <ProjectReference Include="..\BlogManager.IOC\BlogManager.IOC.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.7">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
 </Project>
