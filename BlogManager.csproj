@@ -6,4 +6,14 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="BlogManager.Domain\Enums\" />
+    <Folder Include="BlogManager.Domain\Interfaces\" />
+    <Folder Include="Models\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="BlogManager.IOC\BlogManager.IOC.csproj" />
+  </ItemGroup>
+
 </Project>
