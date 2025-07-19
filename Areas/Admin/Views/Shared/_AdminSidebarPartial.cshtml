@@ -1,0 +1,208 @@
+﻿@using BlogManager.Data.Statics
+<aside class="side-mini-panel with-vertical">
+    <div class="iconbar">
+        <div>
+            <div class="mini-nav">
+                <div class="brand-logo d-flex align-items-center justify-content-center">
+                    <a class="nav-link sidebartoggler" id="headerCollapse" href="javascript:void(0)">
+                        <iconify-icon icon="solar:hamburger-menu-line-duotone" class="fs-7"></iconify-icon>
+                    </a>
+                </div>
+                <ul class="mini-nav-ul" data-simplebar>
+                    <li class="mini-nav-item" id="mini-1"
+                        data-area-name="Admin">
+                        <a href="javascript:void(0)"
+                           data-bs-toggle="tooltip"
+                           data-bs-custom-class="custom-tooltip"
+                           data-bs-placement="right"
+                           data-bs-title="داشبورد"
+                           data-bs-trigger="hover">
+                            <iconify-icon icon="solar:layers-line-duotone" class="fs-7"></iconify-icon>
+                        </a>
+                    </li>
+                    <li>
+                        <span class="sidebar-divider lg"></span>
+                    </li>
+                </ul>
+
+            </div>
+            <div class="sidebarmenu">
+                <div class="brand-logo d-flex align-items-center justify-content-center nav-logo">
+                    <a class="text-nowrap logo-img"
+                       asp-area=""
+                       asp-controller="Home"
+                       asp-action="Index">
+                        @await Component.InvokeAsync("AdminSiteLogo")
+                    </a>
+                </div>
+
+                <nav class="sidebar-nav" id="menu-right-mini-1" data-target-area="Admin" data-simplebar>
+                    <ul class="sidebar-menu">
+                        <li class="sidebar-item"
+                            invoke-permission="@PermissionsName.UserManagement|@PermissionsName.CountryExtensionManagement| @PermissionsName.FeatureManagement
+                            | @PermissionsName.RoleManagement | @PermissionsName.SiteSettingManagement | @PermissionsName.BlackListManagement
+                            | @PermissionsName.ReserveWordGroupManagement | @PermissionsName.ReserveWordKindManagement">
+                            <a class="sidebar-link" aria-expanded="false"
+                               asp-area="Admin"
+                               asp-controller="Home"
+                               asp-action="Index">
+                                <iconify-icon icon="material-symbols:dashboard-outline-rounded" width="22"
+                                              height="22"></iconify-icon>
+                                <span class="hide-menu">داشبورد</span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-item" invoke-permission="@PermissionsName.UserManagement">
+                            <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false">
+                                <iconify-icon icon="solar:user-linear" width="22" height="22"></iconify-icon>
+                                <span class="hide-menu">مدیریت کاربران</span>
+                            </a>
+                            <ul aria-expanded="false" class="collapse first-level">
+                                <li class="sidebar-item" invoke-permission="@PermissionsName.UserList">
+                                    <a class="sidebar-link"
+                                       asp-area="Admin"
+                                       asp-controller="User"
+                                       asp-action="List">
+                                        <span class="icon-small"></span> لیست کاربران
+                                    </a>
+                                </li>
+                                <li class="sidebar-item" invoke-permission="@PermissionsName.CreateUser">
+                                    <a class="sidebar-link"
+                                       asp-area="Admin"
+                                       asp-controller="User"
+                                       asp-action="Create">
+                                        <span class="icon-small"></span> افزودن کاربر
+                                    </a>
+                                </li>
+                            </ul>
+
+                        </li>
+                        <li class="sidebar-item" invoke-permission="@PermissionsName.FeatureManagement">
+                            <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false">
+                                <iconify-icon icon="flat-color-icons:google" width="22" height="22"></iconify-icon>
+                                <span class="hide-menu">مدیریت قابلیت ها</span>
+                            </a>
+                            <ul aria-expanded="false" class="collapse first-level">
+                                <li class="sidebar-item" invoke-permission="@PermissionsName.FeatureList">
+                                    <a class="sidebar-link"
+                                       asp-area="Admin"
+                                       asp-controller="Feature"
+                                       asp-action="List">
+                                        <span class="icon-small"></span> لیست قابلیت
+                                    </a>
+                                </li>
+                            </ul>
+
+                        </li>
+                        <li class="sidebar-item" invoke-permission="@PermissionsName.RoleManagement">
+                            <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false">
+                                <iconify-icon icon="eos-icons:role-binding-outlined" width="22"
+                                              height="22"></iconify-icon>
+                                <span class="hide-menu">مدیریت نقش ها</span>
+                            </a>
+                            <ul aria-expanded="false" class="collapse first-level">
+                                <li class="sidebar-item" invoke-permission="@PermissionsName.RoleList">
+                                    <a class="sidebar-link"
+                                       asp-area="Admin"
+                                       asp-controller="Role"
+                                       asp-action="List">
+                                        <span class="icon-small"></span> لیست دسترسی ها
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="sidebar-item" invoke-permission="@PermissionsName.CountryExtensionManagement">
+                            <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false">
+                                <iconify-icon icon="streamline-cyber:flag-double" width="22" height="22"></iconify-icon>
+                                <span class="hide-menu">مدیریت کشور ها </span>
+                            </a>
+                            <ul aria-expanded="false" class="collapse first-level"
+                                invoke-permission="@PermissionsName.CountryExtensionList">
+                                <li class="sidebar-item">
+                                    <a class="sidebar-link"
+                                       asp-area="Admin"
+                                       asp-controller="CountryExtension"
+                                       asp-action="List">
+                                        <span class="icon-small"></span>لیست کشور ها
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="sidebar-item" invoke-permission="@PermissionsName.SiteSettingManagement">
+                            <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false">
+                                <iconify-icon icon="ep:setting" width="22" height="22"></iconify-icon>
+                                <span class="hide-menu">تنظیمات سایت</span>
+                            </a>
+                            <ul aria-expanded="false" class="collapse first-level"
+                                invoke-permission="@PermissionsName.UpdateSiteSetting">
+                                <li class="sidebar-item">
+                                    <a class="sidebar-link"
+                                       asp-area="Admin"
+                                       asp-controller="SiteSetting"
+                                       asp-action="Update">
+                                        <span class="icon-small"></span>ویرایش تنظیمات سایت
+                                    </a>
+                                </li>
+                            </ul>
+
+                        </li>
+                        <li class="sidebar-item" invoke-permission="@PermissionsName.BlackListManagement">
+                            <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false">
+                                <iconify-icon icon="ri:file-list-3-line" width="22" height="22"></iconify-icon>
+                                <span class="hide-menu">بلک لیست</span>
+                            </a>
+                            <ul aria-expanded="false" class="collapse first-level"
+                                invoke-permission="@PermissionsName.BlackListList">
+                                <li class="sidebar-item">
+                                    <a class="sidebar-link"
+                                       asp-area="Admin"
+                                       asp-controller="BlackList"
+                                       asp-action="List">
+                                        <span class="icon-small"></span>لیست عبارت های ممنوع
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="sidebar-item"
+                            invoke-permission="@PermissionsName.ReserveWordGroupManagement | @PermissionsName.ReserveWordKindManagement">
+                            <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false">
+                                <iconify-icon icon="fa-regular:file-word" width="16" height="22"></iconify-icon>
+                                <span class="hide-menu">مدیریت رزرو ورد</span>
+                            </a>
+                            <ul aria-expanded="false" class="collapse first-level">
+                                <li class="sidebar-item" invoke-permission="@PermissionsName.ReserveWordKindList">
+                                    <a class="sidebar-link"
+                                       asp-area="Admin"
+                                       asp-controller="ReserveWordKind"
+                                       asp-action="List">
+                                        <span class="icon-small"></span>لیست نوع رزرو ورد
+                                    </a>
+                                </li>
+                                <li class="sidebar-item" invoke-permission="@PermissionsName.ReserveWordGroupList">
+                                    <a class="sidebar-link"
+                                       asp-area="Admin"
+                                       asp-controller="ReserveWordGroup"
+                                       asp-action="List">
+                                        <span class="icon-small"></span>لیست گروه رزرو ورد
+                                    </a>
+                                </li>
+                                <li class="sidebar-item" invoke-permission="@PermissionsName.ReserveWordGroupList">
+                                    <a class="sidebar-link"
+                                       asp-area="Admin"
+                                       asp-controller="ReserveWord"
+                                       asp-action="List">
+                                        <span class="icon-small"></span>لیست رزرو ورد
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+
+                    </ul>
+                </nav>
+
+
+            </div>
+        </div>
+    </div>
+</aside>

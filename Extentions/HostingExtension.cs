@@ -1,5 +1,6 @@
 ﻿using BlogManager.Data.Context;
 using Microsoft.EntityFrameworkCore;
+using BlogManager.Core.Statics;
 
 namespace BlogManager.Extentions
 {
@@ -8,7 +9,7 @@ namespace BlogManager.Extentions
         public static WebApplication ConfigServices(this WebApplicationBuilder builder)
         {
             builder.Services.AddControllersWithViews();
-
+            builder.Configuration.GetSection("FilePaths").Get<FilePaths>();
 
             #region DbConnection
 

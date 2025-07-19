@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html lang="fa" dir="rtl" data-bs-theme="light" data-color-theme="Blue_Theme" data-layout="vertical">
+<head>
+    <partial name="~/Areas/Admin/Views/Shared/_MetaTags.cshtml" />
+    <partial name="~/Areas/Admin/Views/Shared/_HeaderReferencesPartial.cshtml" />
+    @await RenderSectionAsync("Styles", false)
+    <title>کیوردچی | @ViewData["Title"]</title>
+</head>
+<body>
+    <div class="preloader"><div class="spinner-border lds-ripple img-fluid"></div></div>
+    <div id="main-wrapper">
+        <partial name="~/Areas/Admin/Views/Shared/_AdminSideBarPartial.cshtml" />
+        <div class="page-wrapper">
+            <partial name="~/Areas/Admin/Views/Shared/_HeaderPartial.cshtml" />
+
+            <div class="body-wrapper me-4">
+                <div class="container-fluid pb-0">
+                    @await RenderSectionAsync("Breadcrumb", true)
+                </div>
+                <div class="container-fluid" id="render-body">
+                    @RenderBody()
+                </div>
+            </div>
+            <partial name="~/Areas/Admin/Views/Shared/_TemplateSetting.cshtml" />
+        </div>
+
+    </div>
+    <div class="dark-transparent sidebartoggler"></div>
+    <partial name="~/Areas/Admin/Views/Shared/_FooterReferencesPartial.cshtml" />
+    <partial name="~/Areas/Admin/Views/Shared/_NotificationsPartial.cshtml" />
+    <partial name="~/Areas/Admin/Views/Shared/_ModalPartial.cshtml" />
+    <partial name="~/Areas/Admin/Views/Shared/_ValidationScriptsPartial.cshtml" />
+    @await RenderSectionAsync("Scripts", false)
+
+</body>
+</html>
