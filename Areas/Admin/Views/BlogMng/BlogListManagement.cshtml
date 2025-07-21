@@ -1,0 +1,158 @@
+﻿@using BlogManager.Core.Statics
+@using BlogManager.Data.Statics
+@model BlogManager.Domain.ViewModels.Blog.Admin.AdminBlogViewModel
+@{
+    ViewData["Title"] = "لیست کاربران";
+    Layout = "_AdminLayout";
+}
+
+@section Breadcrumb
+{
+    <admin-breadcrumb page-title="@ViewData["Title"]">
+        <admin-breadcrumb-item last-active-item="true">لیست کاربران</admin-breadcrumb-item>
+    </admin-breadcrumb>
+}
+
+@section Scripts
+{
+    <script src="/admin/js/role-service.js"></script>
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="mb-4">
+                    <h2 class="card-title">فیلتــر</h2>
+                </div>
+                <div>
+                    @* <form asp-area="Admin" *@
+                    @*       asp-controller="blogs" *@
+                    @*       asp-action="List" *@
+                    @*       method="get" *@
+                    @*       id="filter-search" *@
+                    @*       class="floating-labels" *@
+                    @*       no-validation> *@
+                    @*     <input asp-for="Page" type="hidden"/> *@
+                    @* *@
+                    @*     <div class="row filter-form"> *@
+                    @*         <div class="form-group col-12 col-md-4 mb-4"> *@
+                    @*             <input asp-for="Email" class="form-control"> *@
+                    @*             <span class="bar"></span> *@
+                    @*             <label asp-for="Email"></label> *@
+                    @*         </div> *@
+                    @*         <div class="form-group col-12 col-md-4 mb-4"> *@
+                    @*             <select class="form-control form-select" asp-for="blogsActiveStatus" *@
+                    @*                     asp-items="@Html.GetEnumSelectList<blogsActiveStatus>()"></select> *@
+                    @*             <span class="bar"></span> *@
+                    @*             <label asp-for="blogsActiveStatus"></label> *@
+                    @*         </div> *@
+                    @*         <div class="form-group col-12 col-md-4 mb-4"> *@
+                    @*             <select class="form-control form-select" asp-for="DeleteStatus" *@
+                    @*                     asp-items="@Html.GetEnumSelectList<DeleteStatus>()"></select> *@
+                    @*             <span class="bar"></span> *@
+                    @*             <label asp-for="DeleteStatus"></label> *@
+                    @*         </div> *@
+                    @* *@
+                    @*         <div class="col-12 mt-3 d-md-flex"> *@
+                    @*             <div class="col-12 col-md-2 p-0 me-1"> *@
+                    @*                 <button class="btn btn-rounded btn-outline-primary w-100" type="submit">جستجو *@
+                    @*                 </button> *@
+                    @*             </div> *@
+                    @*             @if (Model.HasFilters()) *@
+                    @*             { *@
+                    @*                 <div class="col-12 col-md-2 p-0 mt-3 mt-md-0"> *@
+                    @*                     <a class="btn btn-rounded btn-danger w-100 text-nowrap" *@
+                    @*                        asp-area="Admin" *@
+                    @*                        asp-controller="blogs" *@
+                    @*                        asp-action="List">حذف فیلتر ها *@
+                    @*                     </a> *@
+                    @*                 </div> *@
+                    @*             } *@
+                    @*         </div> *@
+                    @*     </div> *@
+                    @* </form> *@
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="mb-3 d-flex justify-content-between align-items-center">
+                    <div>
+                        <h2 class="card-title">@ViewData["Title"]</h2>
+                    </div>
+                    <div>
+                        <a class="btn btn-rounded btn-success" invoke-permission="@PermissionsName.BlogListManagement"
+                           asp-area="Admin"
+                           asp-controller="blogs"
+                           asp-action="Create">افزودن</a>
+                    </div>
+                </div>
+                @if (Model.Entities is not null && Model.Entities.Any())
+                {
+                    <div class="table-responsive mb-4 border rounded-1">
+
+                        <table class="table text-nowrap mb-0 align-middle">
+                            <thead class="text-dark fs-4">
+                            <tr>
+                                <th>
+                                    <h6 class="fs-4 fw-semibold mb-0">نام و نام خانوادگی</h6>
+                                </th>
+                                <th>
+                                    <h6 class="fs-4 fw-semibold mb-0">وضعیت حساب کاربری</h6>
+                                </th>
+                                <th>
+                                    <h6 class="fs-4 fw-semibold mb-0">تاریخ ایجاد</h6>
+                                </th>
+                                <th>
+                                    <h6 class="fs-4 fw-semibold mb-0">عملیات</h6>
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach (var blogs in Model.Entities)
+                            {
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <img
+                                                src="@(blogs.ImageUrl.StartsWith("https") ? blogs.ImageUrl : FilePaths.BlogMainImagesTmp + blogs.ImageUrl )"
+                                                class="rounded-circle"
+                                                width="40"
+                                                height="40">
+                                            @* <div class="ms-3"> *@
+                                            @*     <h6 class="fs-4 fw-semibold mb-0">@blogs.Email</h6> *@
+                                            @* </div> *@
+                                        </div>
+                                    </td>
+                                    <td>
+                                        @if (blogs.IsShow)
+                                        {
+                                            <span class="badge bg-success-subtle text-success">فعال</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge bg-danger-subtle text-danger">غیرفعال</span>
+                                        }
+                                    </td>
+                                    <td>
+                                        <p class="mb-0 fw-normal fs-4">@blogs.LastChangeDateShamsi</p>
+                                    </td>
+                                   >
+                                </tr>
+                            }
+                            </tbody>
+                        </table>
+                    </div>
+                    <partial name="_PagingPartial" model="@Model.GetCurrentPaging()"/>
+                }
+                else
+                {
+                    <partial name="_NotFoundPartial"/>
+                }
+            </div>
+        </div>
+    </div>
+</div>

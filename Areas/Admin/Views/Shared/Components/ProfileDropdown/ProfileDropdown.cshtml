@@ -1,0 +1,62 @@
+﻿@* @using ArabicKeywordchi.Core.Statics *@
+@* *@
+@* *@
+@* <!-- ------------------------------- --> *@
+@* <!-- start profile Dropdown --> *@
+@* <!-- ------------------------------- --> *@
+@* <li class="nav-item dropdown"> *@
+@*     <a class="nav-link" href="javascript:void(0)" id="drop1" aria-expanded="false"> *@
+@*         <div class="d-flex align-items-center gap-2 lh-base"> *@
+@*             <img src="@(FilePaths.UserImagePath + "")" class="rounded-circle" *@
+@*                  width="35" height="35" alt="matdash-img"/> *@
+@*             <iconify-icon icon="solar:alt-arrow-down-bold" class="fs-2"></iconify-icon> *@
+@*         </div> *@
+@*     </a> *@
+@*     <div class="dropdown-menu profile-dropdown dropdown-menu-end dropdown-menu-animate-up" *@
+@*          aria-labelledby="drop1"> *@
+@*         <div class="position-relative px-4 pt-3 pb-2"> *@
+@*             <div class="d-flex align-items-center mb-3 pb-3 border-bottom gap-6"> *@
+@*                 <img *@
+@*                     src="@(FilePaths.UserImagePath + "")" *@
+@*                     class="rounded-circle" *@
+@*                     width="56" height="56" alt="matdash-img"/> *@
+@*                 <div> *@
+@*                     <h5 class="mb-0 fs-12"> *@
+@*                         @Model.FullName *@
+@*                     </h5> *@
+@*                     <p class="mb-0 text-dark mt-1"> *@
+@*                         @Model.Mobile *@
+@*                     </p> *@
+@*                 </div> *@
+@*             </div> *@
+@*             <div class="message-body"> *@
+@*                 <a class="p-2 dropdown-item h6 rounded-1 d-flex align-items-center justify-content-start" *@
+@*                    asp-area="" *@
+@*                    asp-controller="Home" *@
+@*                    asp-action="Index"> *@
+@*                     <iconify-icon class="me-2" icon="fluent:panel-right-32-filled" width="22" *@
+@*                                   height="22"></iconify-icon> *@
+@*                     <span>پنل کاربری</span> *@
+@*                 </a> *@
+@*                 <a class="p-2 dropdown-item h6 rounded-1 d-flex align-items-center justify-content-start" *@
+@*                    asp-area="" *@
+@*                    asp-controller="Home" *@
+@*                    asp-action="Index"> *@
+@*                     <iconify-icon class="me-2" icon="fluent-mdl2:website" width="22" height="22"></iconify-icon> *@
+@*                     <span>سایت</span> *@
+@*                 </a> *@
+@*                 $1$ <a class="p-2 dropdown-item h6 rounded-1 d-flex align-items-center justify-content-start" #1# *@
+@*                 $1$    asp-area="" #1# *@
+@*                 $1$    asp-controller="Account" #1# *@
+@*                 $1$    asp-action="Logout"> #1# *@
+@*                 $1$     <iconify-icon class="me-2" icon="material-symbols:logout-rounded" width="22" #1# *@
+@*                 $1$                   height="22"></iconify-icon> #1# *@
+@*                 $1$     <span>خروج از حساب کاربری</span> #1# *@
+@*                 $1$ </a> #1# *@
+@*             </div> *@
+@*         </div> *@
+@*     </div> *@
+@* </li> *@
+@* <!-- ------------------------------- --> *@
+@* <!-- end profile Dropdown --> *@
+@* <!-- ------------------------------- --> *@

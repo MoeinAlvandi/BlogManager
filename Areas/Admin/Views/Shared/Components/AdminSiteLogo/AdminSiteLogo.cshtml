@@ -1,0 +1,8 @@
+﻿@using BlogManager.Core.Statics
+
+@{
+    var siteLogoName = ViewData["SiteLogo"] as string;
+}
+
+<img src="@(FilePaths.SiteSettings + siteLogoName)" alt="Logo"
+     style="@(ViewBag.IsMobile == true ? "width:56px; height:56px;" : "")">

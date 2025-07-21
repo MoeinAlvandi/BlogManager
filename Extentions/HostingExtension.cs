@@ -1,6 +1,7 @@
 ﻿using BlogManager.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using BlogManager.Core.Statics;
+using BlogManager.IOC;
 
 namespace BlogManager.Extentions
 {
@@ -19,7 +20,7 @@ namespace BlogManager.Extentions
             });
 
             #endregion
-
+            builder.Services.RegisterServices();
             return builder.Build();
         }
 
